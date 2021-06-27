@@ -1,0 +1,22 @@
+﻿@model QRModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form asp-action="Index" method="post">
+        <label asp-for="QrCodeContent"></label>
+        <input asp-for="QrCodeContent" />
+        <span asp-validation-for="QrCodeContent"></span>
+        <button class="btn btn-success">QR Code Generate</button>
+    </form>
+    @if (!string.IsNullOrEmpty(Model.QrCodePath))
+    {
+        <div>
+            <img src="~/images/@Model.QrCodePath" alt="" />
+        </div>
+        <a class="btn btn-primary" href="~/images/@Model.QrCodePath" download>Download QR Code</a>
+    }
+</div>
+
+
